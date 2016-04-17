@@ -13,10 +13,20 @@ Plugin 'shougo/neocomplcache.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'yggdroot/indentline'
+Plugin 'ervandew/supertab'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 filetype on
+
+"handle colorscheme 
+set background=dark
+colorscheme gruvbox
+syntax enable
 
 " set leader
 let mapleader = ' '
@@ -33,7 +43,6 @@ set smartindent
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
-
 
 " normal vim settings
 set tabstop=2
@@ -56,4 +65,6 @@ let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 
-autocmd VimEnter * NERDTree
+" starting up plugins
+autocmd VimEnter * NERDTree 
+autocmd VimEnter * IndentLinesToggle
