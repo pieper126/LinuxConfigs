@@ -18,6 +18,7 @@ Plugin 'yggdroot/indentline'
 Plugin 'ervandew/supertab'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
+Plugin 'nacitar/terminalkeys.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -27,6 +28,9 @@ filetype on
 set background=dark
 colorscheme gruvbox
 syntax enable
+
+"used for handling color 256 for the colorscheme
+set t_ut=
 
 " set leader
 let mapleader = ' '
