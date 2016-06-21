@@ -11,7 +11,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'shougo/neocomplcache.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'yggdroot/indentline'
@@ -20,8 +20,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 Plugin 'nacitar/terminalkeys.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'easymotion/vim-easymotion'
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 filetype on
@@ -60,6 +60,11 @@ inoremap jj <esc>
 
 " airline settings
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_detect_paste=1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 1
 
 " CtrlP settings
 let g:ctrlp_map = '<leader>f'
@@ -81,7 +86,24 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"easymotion set up
+" tmuxline options
+let g:tmuxline_preset = {
+      \'a'       : '#S',
+      \'b'       : '#W',
+      \'c'       : '#H',
+      \'win'     : '#I #W',
+      \'cwin'    : '#I #W',
+      \'x'       : '%a',
+      \'y'       : '#W %R',
+      \'z'       : '#H',
+      \'options' : {'status-justify' : 'left'}}
+
+let g:tmuxline_separators = {
+      \ 'left' : '',
+      \ 'left_alt': '>',
+      \ 'right' : '',
+      \ 'right_alt' : '<',
+      \ 'space' : ' '}
 
 " starting up plugins
 "autocmd VimEnter * NERDTree
