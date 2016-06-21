@@ -19,12 +19,14 @@ Plugin 'ervandew/supertab'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 Plugin 'nacitar/terminalkeys.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 filetype on
 
-"handle colorscheme 
+"handle colorscheme
 set background=dark
 colorscheme gruvbox
 syntax enable
@@ -69,6 +71,18 @@ let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 
+" syntastic setting
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"easymotion set up
+
 " starting up plugins
-autocmd VimEnter * NERDTree 
+"autocmd VimEnter * NERDTree
 autocmd VimEnter * IndentLinesToggle
