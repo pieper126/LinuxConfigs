@@ -1,0 +1,23 @@
+{
+    "vim.leader": " ",
+    "vim.useCtrlKeys": true,
+    "vim.searchHighlightColor": "rgba(150, 150, 255, 0.3)",
+    "vim.startInInsertMode": true,
+    "vim.autoindent": true,
+    "vim.history": 50,
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.easymotion": true,
+    "vim.showcmd": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ]
+}
