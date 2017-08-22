@@ -28,6 +28,7 @@ Plugin 'w0rp/ale'
 " tmux plugins
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'benmills/vimux'
 
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -44,6 +45,10 @@ filetype on
 set background=dark
 colorscheme gruvbox
 syntax enable
+
+" stop vim from slowing down by syntax highlighting
+"set nohidden
+set re=1
 
 "used for handling color 256 for the colorscheme
 set t_ut=
@@ -88,11 +93,6 @@ let g:airline#extensions#tmuxline#enabled = 1
 "-------------------- CtrlP settings
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_cmd = 'CtrlPMixed'
-" Disable autocompletePopup
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-"let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 
 "-------------------- The Silver Searcher
@@ -121,22 +121,18 @@ let g:ale_lint_on_text_changed = 'never'
 "\   'javascript': ['eslint'],
 "\}
 "------------------------------ end Ale
-" syntastic setting
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_ruby_checkers = ['rubocop']
+"----------------------- begin vim-test
+let g:test#preserve_screen = 1
+let test#strategy = "vimux"
+nmap <silent> <leader>t :TestFile<CR>
+nmap <silent> <leader>T :TestSuite<CR>
+"----------------------- end vim-test
 
-"highlight link SyntasticErrorSign SignColumn
-"highlight link SyntasticWarningSign SignColumn
-"highlight link SyntasticStyleErrorSign SignColumn
-"highlight link SyntasticStyleWarningSign SignColumn
+"----------------------- begin vimux
+let g:VimuxOrientation = "v"
+let VimuxUseNearest = 1
+"----------------------- end vimux
 
 " tmuxline options
 let g:tmuxline_preset = {
@@ -157,13 +153,7 @@ let g:tmuxline_separators = {
       \ 'right_alt' : '<',
       \ 'space' : ' '}
 
-" starting up plugins
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * IndentLinesToggle
-
-
-
-" Disable AutoComplPop.
+" Disable autocompletePopup
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
@@ -208,35 +198,16 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " AutoComplPop like behavior.
 "let g:neocomplete#enable_auto_select = 1
 
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-"Autoformat settings
-"au BufWrite * :Autoformat
-
-"let g:autoformat_autoindent = 0
-"let g:autoformat_retab = 0
-"let g:autoformat_remove_trailing_spaces = 0
 

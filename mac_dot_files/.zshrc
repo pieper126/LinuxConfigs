@@ -87,8 +87,15 @@ source $ZSH/oh-my-zsh.sh
 alias gwip="git commit -m 'WIP'"
 alias gwipa="git add . && gwip"
 alias gs="git status"
-alias grh="git status"
+alias fs="pkill mailhog ; pkill node ; pkill ruby ; bin/foreman start"
+alias aws_instances="aws ec2 describe-instances --query 'Reservations[].Instances[].[State.Name,PrivateIpAddress,Tags[].Value[]]'"
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# OPAM configuration
+. /Users/stijnbijnen/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
